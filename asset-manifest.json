@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/transformation-concentration/static/css/main.5d0a35c1.css",
+    "main.js": "/transformation-concentration/static/js/main.8f94eb14.js",
+    "static/media/logo.png": "/transformation-concentration/static/media/logo.2f9fda77b687efe82a91.png",
+    "index.html": "/transformation-concentration/index.html",
+    "main.5d0a35c1.css.map": "/transformation-concentration/static/css/main.5d0a35c1.css.map",
+    "main.8f94eb14.js.map": "/transformation-concentration/static/js/main.8f94eb14.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d0a35c1.css",
+    "static/js/main.8f94eb14.js"
+  ]
+}
