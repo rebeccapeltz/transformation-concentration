@@ -10,59 +10,47 @@ import {
 import Card from "./card";
 import "./app.scss";
 
-const uniqueCardsArray1 = [
+const logo = "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_500,c_pad,e_replace_color:blue/v1625159580/logo.png";
+
+const data = [
   {
-    type: "Pikachu",
-    image: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_cartoonify/chicken.jpg"
+    type: "cartoonify",
+    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_cartoonify/chicken.jpg",
+    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Cartoonify/1px.png"
   },
   {
-    type: "ButterFree",
-    image: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_grayscale/rocket.jpg"
+    type: "grayscale",
+    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_grayscale/rocket.jpg",
+    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Grayscale/1px.png"
   },
   {
-    type: "Charmander",
-    image: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_outline:20,co_green/unicorn-head.png"
+    type: "outline",
+    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_outline:20,co_green/unicorn-head.png",
+    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Outline/1px.png"
   },
   {
-    type: "Squirtle",
-    image: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_sepia/cld-sample"
+    type: "sepia",
+    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_sepia/cld-sample",
+    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Sepia/1px.png"
   },
   {
-    type: "Pidgetto",
-    image: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_blur_faces/tutoring"
+    type: "blur-faces",
+    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_blur_faces/tutoring",
+    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Blur%20Faces/1px.png"
   },
   {
-    type: "Bulbasaur",
-    image: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_pad,b_auto,e_oil_paint/rose-peach"
+    type: "oil-paint",
+    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_pad,b_auto,e_oil_paint/rose-peach",
+    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Oil%20Paint/1px.png"
   }
 ];
-const uniqueCardsArray2 = [
-  {
-    type: "Pikachu",
-    image:"https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Cartoonify/1px.png"
-  },
-  {
-    type: "ButterFree",
-    image: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Grayscale/1px.png"
-  },
-  {
-    type: "Charmander",
-    image: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Outline/1px.png"
-  },
-  {
-    type: "Squirtle",
-    image: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Sepia/1px.png"
-  },
-  {
-    type: "Pidgetto",
-    image: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Blur%20Faces/1px.png"
-  },
-  {
-    type: "Bulbasaur",
-    image: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Oil%20Paint/1px.png"
-  }
-];
-// debugger
+
+let result = data.reduce((array, obj) => {
+  array.push({ type: obj.type, image: obj.image1 });
+  array.push({ type: obj.type, image: obj.image2 });
+  return array;
+}, []);
+// console.log(JSON.stringify(result, null, 2))
 
 function shuffleCards(array) {
   const length = array.length;
@@ -77,7 +65,7 @@ function shuffleCards(array) {
 }
 export default function App() {
   const [cards, setCards] = useState(() =>
-    shuffleCards(uniqueCardsArray1.concat(uniqueCardsArray2))
+    shuffleCards(result)
   );
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
@@ -97,7 +85,8 @@ export default function App() {
   };
 
   const checkCompletion = () => {
-    if (Object.keys(clearedCards).length === uniqueCardsArray1.length) {
+    if (Object.keys(clearedCards).length === data.length) {
+
       setShowModal(true);
       const highScore = Math.min(moves, bestScore);
       setBestScore(highScore);
@@ -137,14 +126,12 @@ export default function App() {
     return () => {
       clearTimeout(timeout);
     };
-  // }, [openCards]);
-});
+  });
 
 
   useEffect(() => {
     checkCompletion();
-  // }, [clearedCards]);
-});
+  });
 
   const checkIsFlipped = (index) => {
     return openCards.includes(index);
@@ -161,7 +148,7 @@ export default function App() {
     setMoves(0);
     setShouldDisableAllCards(false);
     // set a shuffled deck of cards
-    setCards(shuffleCards(uniqueCardsArray1.concat(uniqueCardsArray2)));
+    setCards(shuffleCards(result));
   };
 
   return (
@@ -183,6 +170,7 @@ export default function App() {
               isInactive={checkIsInactive(card)}
               isFlipped={checkIsFlipped(index)}
               onClick={handleCardClick}
+              logo={logo}
             />
           );
         })}
@@ -206,8 +194,7 @@ export default function App() {
       </footer>
       <Dialog
         open={showModal}
-        disableBackdropClick
-        disableEscapeKeyDown
+       
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
