@@ -19,7 +19,7 @@ export default function Learn(props) {
                     <Grid2 container spacing={2}>
                         {props.data.map((item, index) => {
                             return (
-                                <Grid2 xs={12} md={4}>
+                                <Grid2 xs={12} md={4} key={index}>
                                     <LearnCard image={item.image1} type={item.type} />
                                 </Grid2>
                             )

@@ -71,3 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Memory Game on Medium.com
 Ideas borrowed from https://javascript.plainenglish.io/building-a-card-memory-game-in-react-e6400b226b8f
+
+
+  "homepage": "https://beckypeltz.metransformation-concentration",
