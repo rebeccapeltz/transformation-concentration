@@ -7,10 +7,10 @@ import "./app.scss";
 
 export default function LearnCard(props) {
   return (
-    <Card sx={{ maxWidth: 360 }}>
+    <Card sx={{ maxWidth: 500 }}>
       <CardMedia
         component="img"
-        height="400"
+        height="450"
         image={props.image}
         alt= {props.type}
       />

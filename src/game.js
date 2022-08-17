@@ -14,58 +14,27 @@ import "./app.scss";
 
 const logo = "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_500,c_pad,e_replace_color:blue/v1625159580/logo.png";
 
-const data = [
-  {
-    type: "cartoonify",
-    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_cartoonify/chicken.jpg",
-    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Cartoonify/1px.png"
-  },
-  {
-    type: "grayscale",
-    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_grayscale/rocket.jpg",
-    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Grayscale/1px.png"
-  },
-  {
-    type: "outline",
-    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_outline:20,co_green/unicorn-head.png",
-    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Outline/1px.png"
-  },
-  {
-    type: "sepia",
-    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_sepia/cld-sample",
-    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Sepia/1px.png"
-  },
-  {
-    type: "blur-faces",
-    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,e_blur_faces/tutoring",
-    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Blur%20Faces/1px.png"
-  },
-  {
-    type: "oil-paint",
-    image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_pad,b_auto,e_oil_paint/rose-peach",
-    image2: "https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:Oil%20Paint/1px.png"
-  }
-];
 
-let result = data.reduce((array, obj) => {
-  array.push({ type: obj.type, image: obj.image1 });
-  array.push({ type: obj.type, image: obj.image2 });
-  return array;
-}, []);
-// console.log(JSON.stringify(result, null, 2))
-
-function shuffleCards(array) {
-  const length = array.length;
-  for (let i = length; i > 0; i--) {
-    const randomIndex = Math.floor(Math.random() * i);
-    const currentIndex = i - 1;
-    const temp = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temp;
+export default function Game(props) {
+  let result = props.data.reduce((array, obj) => {
+    array.push({ type: obj.type, image: obj.image1 });
+    array.push({ type: obj.type, image: `https://res.cloudinary.com/cloudinary-training/image/upload/h_500,w_600,c_fill/l_text:arial_100_bold:${encodeURIComponent(obj.type)}/1px.png` });
+    return array;
+  }, []);
+  // console.log(JSON.stringify(result, null, 2))
+  
+  function shuffleCards(array) {
+    const length = array.length;
+    for (let i = length; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * i);
+      const currentIndex = i - 1;
+      const temp = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temp;
+    }
+    return array;
   }
-  return array;
-}
-export default function Game() {
+
   const [cards, setCards] = useState(() =>
     shuffleCards(result)
   );
@@ -87,7 +56,7 @@ export default function Game() {
   };
 
   const checkCompletion = () => {
-    if (Object.keys(clearedCards).length === data.length) {
+    if (Object.keys(clearedCards).length === props.data.length) {
 
       setShowModal(true);
       const highScore = Math.min(moves, bestScore);
@@ -154,7 +123,7 @@ export default function Game() {
   };
 
   return (
-    <div className="App">
+    <div className="page">
       <header>
         <h1 className="intro">Play Tranformation Concentration</h1>
         <p>
