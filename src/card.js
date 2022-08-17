@@ -20,7 +20,7 @@ const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled,logo }) 
                 <img src={logo} alt="logo" />
             </div>
             <div className="card-face card-back-face">
-                <img src={card.image} alt="guessing image" />
+                <img src={card.image} alt="guessing effect" />
             </div>
         </div>
     );
