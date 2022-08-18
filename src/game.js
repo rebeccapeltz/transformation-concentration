@@ -130,7 +130,7 @@ export default function Game(props) {
           Select two cards with same transformation effect applied.
         </p>
         <div className="intro" >
-          <Link to="/">Learn more!</Link>
+          <Link to="/">Click to learn more!</Link>
         </div>
       </header>
       <div className="container">

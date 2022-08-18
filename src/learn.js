@@ -12,7 +12,7 @@ export default function Learn(props) {
                     Study the names and images for this set of effects.
                 </p>
                 <div className="intro">
-                    <Link to="game">Play the game!</Link>
+                    <Link to="game">Click to play the game!</Link>
                 </div>
             </header>
             <div className="align-learn-card">
