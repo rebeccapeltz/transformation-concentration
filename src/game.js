@@ -125,7 +125,7 @@ export default function Game(props) {
   return (
     <div className="page">
       <header>
-        <h1 className="intro">Play Tranformation Concentration</h1>
+        <h1 className="intro">Play Transformation Concentration</h1>
         <p>
           Select two cards with same transformation effect applied.
         </p>
