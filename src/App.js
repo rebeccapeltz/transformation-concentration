@@ -19,7 +19,7 @@ export default function App() {
     },
     {
       type: "Sepia",
-      image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,g_auto,e_sepia/cld-sample"
+      image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_500,w_600,c_fill,g_auto,e_sepia/masonry-signed/ywoarjbphlgfikmg9han.png"
     },
     {
       type: "Blur-faces",
