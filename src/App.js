@@ -15,7 +15,7 @@ export default function App() {
     },
     {
       type: "Outline",
-      image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_360,w_480,c_limit,e_outline:10,co_green/unicorn-head"
+      image1: "https://res.cloudinary.com/picturecloud7/image/upload/h_360,w_480,c_pad,e_outline:5,co_blue/unicorn-head"
     },
     {
       type: "Sepia",

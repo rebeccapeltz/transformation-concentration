@@ -10,7 +10,7 @@ export default function LearnCard(props) {
     <Card sx={{ maxWidth: 500 }}>
       <CardMedia
         component="img"
-        height="450"
+        width="450"
         image={props.image}
         alt= {props.type}
       />
